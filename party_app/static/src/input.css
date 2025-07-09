@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap'); /* NEW */
+
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Roboto", sans-serif;
+    --font-dancing-script: "Dancing Script", cursive;
+
+    --color-custom-powder-light: #eee2dc;
+    --color-custom-powder: #edc7b7;
+    --color-custom-blue: #123c69;
+    --color-custom-blue-light: #3a6aa4;
+    --color-custom-red: #ac3b61;
+}
+
+@layer components {
+    .btn-default {
+        padding-top: theme('spacing.2');
+        padding-bottom: theme('spacing.2');
+        padding-left: theme('spacing.4');
+        padding-right: theme('spacing.4');
+        font-weight: theme('fontWeight.semibold');
+        border-radius: theme('borderRadius.xl');
+        background-color: var(--color-custom-blue);
+        color: var(--color-custom-powder-light);
+    }
+
+    .btn-default:hover {
+        background-color: var(--color-custom-blue-light);
+    }
+}

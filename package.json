@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.12",
+    "tailwindcss": "^4.0.12"
+  },
+  "scripts": {
+    "tailwind:dev": "npx @tailwindcss/cli -i party_app/static/src/input.css -o party_app/static/css/output.css --watch",
+    "tailwind:build": "npx @tailwindcss/cli -i party_app/static/src/input.css -o party_app/static/css/output.css --minify"
+  }
+}

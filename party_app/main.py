@@ -9,3 +9,8 @@ app.mount(
     StaticFiles(directory=Path(__file__).resolve().parent / "static"),
     name="static",
 )
+
+
+@app.get("/")
+async def root():
+    return {"message": "Welcome to the Party App!"}
