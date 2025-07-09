@@ -1,0 +1,65 @@
+[
+  {
+    "gift_name": "Not on the same party list",
+    "price": 12.0,
+    "link": null,
+    "party_id": "389f50c3-9e45-43b7-a578-dd17675c9369",
+    "uuid": "44a6b7b1-9f49-4383-8004-9d7b1ceafdf3"
+  },
+  {
+    "gift_name": "Bonsai tree",
+    "price": 35.0,
+    "link": "https://www.easternleaf.com/Bonsai-Rock-Juniper-Bonsai-Tree-p/800560-03.htm",
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "ab02de7e-b280-47e9-a6b4-09dbcc3893e0"
+  },
+  {
+    "gift_name": "Roses",
+    "price": 22.5,
+    "link": null,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "0311c626-0586-4fd3-8f30-4e926ff055f7"
+  },
+  {
+    "gift_name": "Earings",
+    "price": 100.0,
+    "link": null,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "f86950be-4344-4d24-ac3f-b8cb9c3f6ecf"
+  },
+  {
+    "gift_name": "Chocolate",
+    "price": 10.0,
+    "link": null,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "08c713dd-d5b2-4db4-91ef-92937f8d7af3"
+  },
+  {
+    "gift_name": "Watch",
+    "price": 200.0,
+    "link": "https://placeholder.com/watch",
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "43661bf8-2dc5-45ef-be5c-cde607ae3d16"
+  },
+  {
+    "gift_name": "Book",
+    "price": 20.0,
+    "link": "https://placeholder.com/book/",
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "58c89bd4-8ca3-4153-ae70-882e478ed694"
+  },
+  {
+    "gift_name": "Bike helmet",
+    "price": 52.0,
+    "link": null,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "2a8ee018-80ae-4b77-9f84-844c0dce336e"
+  },
+  {
+    "gift_name": "Bracelet",
+    "price": 15.0,
+    "link": null,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "ca20dd3c-96fd-4576-b200-c579eb3880af"
+  }
+]

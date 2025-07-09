@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Tomas Hodge",
+    "attending": true,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "d5d75c34-a4e3-423e-a657-7a5e070ea849"
+  },
+  {
+    "name": "Maria Tudor",
+    "attending": true,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "8e9ac6fc-e746-4c2d-8876-0c9278249492"
+  },
+  {
+    "name": "Marie Antoinette",
+    "attending": true,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "e1dd36ed-4d09-40ba-8caa-7f4f4235c5f5"
+  },
+  {
+    "name": "Nicholas Kette",
+    "attending": true,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "6035f71c-d9c5-410e-a1b5-c54f74d18e2d"
+  },
+  {
+    "name": "Napoleon Bonaparte",
+    "attending": false,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "04b5132f-2abc-4b86-93fb-a892e714c2e1"
+  },
+  {
+    "name": "Not invited to the Neuschwanstein Castle",
+    "attending": false,
+    "party_id": "2e1be77f-fd1a-4150-a8ad-a19821742de2",
+    "uuid": "7b9caef5-e0f7-458e-9392-82e727a87df5"
+  },
+  {
+    "name": "Anna Maria Larsen Kodilla",
+    "attending": false,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "5129b782-6a37-4d70-b279-56fe9ffe44c1"
+  },
+  {
+    "name": "Piotr Gilles",
+    "attending": false,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "9ccf616b-2286-403c-a478-3baf17542e46"
+  },
+  {
+    "name": "Lizzie Bennet",
+    "attending": true,
+    "party_id": "00bb45a4-3936-477b-8113-323c57f51f08",
+    "uuid": "d6618d10-3682-4284-91b5-88900050e69f"
+  }
+]
