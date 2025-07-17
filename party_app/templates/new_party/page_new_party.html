@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="new-party-form" class="max-w-6xl mx-auto">
+    <section class="drop-shadow-lg my-10 p-6 bg-white rounded-lg">
+        <form action="{{ url_for('new_party_form_page') }}" method="post">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 m-3">
+                <div class="mx-auto">
+                    <label for="party_date" class="block text-gray-700 font-bold mb-2">Party Date:</label>
+                    <input type="date" id="party_date" name="party_date" required
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        hx-post="{{ url_for('validate_date_partial') }}" hx-trigger="blur" hx-swap="textContent"
+                        hx-target="#party_date_error">
+                    <div id="party_date_error" class="fixed text-custom-red"></div>
+                </div>
+                <div class="mx-auto">
+                    <label for="party_time" class="block text-gray-700 font-bold mb-2">Party Time:</label>
+                    <input type="time" id="party_time" name="party_time" required
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mx-auto">
+                    <label for="venue" class="block text-gray-700 font-bold mb-2">Venue:</label>
+                    <input type="text" id="venue" name="venue" maxlength="100" required
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mx-auto col-span-3 mt-5 w-full">
+                    <label for="invitation" class="block text-gray-700 font-bold mb-2">Invitation:</label>
+                    <textarea tid="invitation" name="invitation" minlength="10" required rows="10"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        hx-post="{{ url_for('validate_invitation_partial') }}" hx-trigger="blur" hx-swap="textContent"
+                        hx-target="#party_invitation_error"></textarea>
+                    <div id="party_invitation_error" class="fixed text-custom-red"></div>
+                </div>
+                <div class="w-full col-span-3 text-center">
+                    <button type="submit" class="btn-default focus:outline-none" focus:shadow-outline>Save</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+<div id="party-form">
+    <form hx-put="{{ url_for('party_detail_save_form_partial', party_id=party.uuid) }}" hx-target="#party-form"
+        hx-swap="outerHTML">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 m-3">
+            <div class="mx-auto">
+                <label for="party_date" class="block text-gray-700 font-bold mb-2">Party Date:</label>
+                <input type="date" id="party_date" name="party_date" required value="{{ party.party_date }}"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mx-auto">
+                <label for="party_time" class="bock text-gray-700 font-bold mb-2">Party Time:</label>
+                <input type="time" id="party_time" name="party_time" required value="{{ party.party_time }}"
+                    class="shadow apperance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mx-auto">
+                <label for="venue" class="bock text-gray-700 font-bold mb-2">Venue:</label>
+                <input type="text" id="venue" name="venue" maxlength="100" required value="{{ party.venue }}"
+                    class="shadow apperance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <div class="mx-auto col-span-3 mt-5 w-full">
+                <label for="invitation" class="block text-gray-700 font-bold mb-2">Invitation:</label>
+                <textarea id="invitation" name="invitation" minlength="10" required rows="10"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                {{ party.invitation }}
+                </textarea>
+            </div>
+            <div class="w-full col-span-3 text-center">
+                <button type="submit" class="btn-default focus:outline-none focus:shadow-outline">Save</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
