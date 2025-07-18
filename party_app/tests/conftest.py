@@ -10,7 +10,7 @@ from party_app.main import app
 from party_app.models import Party, Gift, Guest
 
 
-@pytest.fixture(scope="session", name="session")
+@pytest.fixture(scope="function", name="session")
 def session_fixture():
     engine = create_engine(
         "sqlite://", connect_args={"check_same_thread": False}, poolclass=StaticPool

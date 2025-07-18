@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>
+    Gift registry for a party at {{ party.venue }} on {{ party.party_date }}
+</h2>
+<div id="gift-registry" class="bg-white shadow-md">
+    <div class="table w-full text-left text-gray-500 table-fixed">
+        <div class="table-header-group text-sm text-gray-700 uppercase bg-gray-50">
+            <div class="table-cell py-4 px-6">Gift</div>
+            <div class="table-cell py-4 px-6">App. price</div>
+            <div class="table-cell py-4 px-6">Link</div>
+            <div class="table-cell py-4 px-6">Edit</div>
+            <div class="table-cell py-4 px-6">Delete</div>
+        </div>
+        <div class="table-row-group">
+            {% for gift in gifts %}
+            {% include 'gift_registry/partial_gift_detail.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

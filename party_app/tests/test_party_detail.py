@@ -34,7 +34,7 @@ def test_party_detail_form_partial_returns_a_form_with_party_details(
 
     assert response.status_code == status.HTTP_200_OK
     assert response.context["party"] == party
-    assert "party-form" in response.context
+    assert "party-form" in response.text
 
 
 def test_party_detail_form_partial_updates_party_and_returns_updated_party(
@@ -42,10 +42,10 @@ def test_party_detail_form_partial_updates_party_and_returns_updated_party(
 ):
     party = create_party(session=session)
 
-    url = app.url_path_for("party_", party_id=party.uuid)
+    url = app.url_path_for("party_detail_save_form_partial", party_id=party.uuid)
     updated_data = {
         "party_date": "2030-01-01",
-        "party_time": datetime.strptime("00:00", "%H:%M").time(),
+        "party_time": "00:00",
         "invitation": "Updated invitation",
         "venue": "Updated Venue",
     }
