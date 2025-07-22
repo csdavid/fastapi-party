@@ -1,0 +1,18 @@
+<form class="table-row create-gift-form" hx-post="{{ url_for('gift_create_partial', party_id=party_id) }}"
+    hx-target="this" hx-swap="outerHTML">
+    <div class="table-cell py-4 px-6 text-gray-900">
+        <input type="text" id="gift_name" name="gift_name" maxlength="100" required
+            class="shadow appearance-none border rounded w-full py-1 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+    <div class="table-cell py-4 px-6">
+        <input type="number" id="price" name="price" step="0.01" min="0" required
+            class="shadow appearance-none border rounded w-full py-1 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+    <div class="table-cell py-4 px-6">
+        <input type="url" id="link" name="link"
+            class="shadow appearance-none border rounded w-full py-1 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+    <div class="table-cell py-4 px-6">
+        <button type="submit">Add</button>
+    </div>
+</form>

@@ -115,3 +115,48 @@ def test_partial_gift_delete_removes_gift(
     client.delete(url)
 
     assert len(session.exec(select(Gift).where(Gift.party_id == party.uuid)).all()) == 0
+
+
+def test_create_gift_partial_returns_empty_gift_form(
+    session: Session,
+    client: TestClient,
+    create_party: Callable[..., Party],
+):
+    party = create_party(session=session)
+
+    url = app.url_path_for("gift_create_partial", party_id=party.uuid)
+    response = client.get(url)
+
+    assert response.status_code == status.HTTP_200_OK
+    assert response.context["party_id"] == party.uuid
+    assert "create-gift-form" in response.text
+
+
+def test_new_gift_save_partial_saves_gift_and_returns_its_details_including_party(
+    session: Session,
+    client: TestClient,
+    create_party: Callable[..., Party],
+):
+    party = create_party(session=session)
+
+    url = app.url_path_for("gift_create_save_partial", party_id=party.uuid)
+    new_gift_data = {
+        "gift_name": "New Gift",
+        "price": "100",
+        "link": "https://newtestlink.com",
+    }
+
+    response = client.post(url, data=new_gift_data)
+
+    saved_gift = session.exec(
+        select(Gift).where(Gift.gift_name == new_gift_data["gift_name"])
+    ).first()
+
+    assert saved_gift.gift_name == new_gift_data["gift_name"]
+    assert saved_gift.price == Decimal(new_gift_data["price"])
+    assert saved_gift.link == new_gift_data["link"]
+    assert saved_gift.party_id == party.uuid
+
+    assert response.status_code == status.HTTP_200_OK
+    assert response.context["gift"] == saved_gift
+    assert response.context["party"] == party

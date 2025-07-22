@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="w-1/2 bg-white shadow-md m-auto">
+    <form class="table text-left text-gray-500 table-fixed min-w-fit p-8" id="guest-form">
+        <div class="table-row-group" id="guests">
+            {% include 'guest_list/partial_guest_list.html' %}
+        </div>
+    </form>
+    <div class="bg-gray-50 grid grid-cols-2" hx-include="#guests" hx-target="#guests">
+        <button class="p-5 uppercase text-sm cursor-pointer" type="button"
+            hx-put="{{ url_for('mark_guests_not_attending_partial', party_id=party_id) }}">
+            Not attending
+        </button>
+        <button class="p-5 uppercase text-sm cursor-pointer" type="button"
+            hx-put="{{ url_for('mark_guests_attending_partial', party_id=party_id) }}">
+            Attending
+        </button>
+    </div>
+</div>
+{% endblock %}

@@ -14,7 +14,8 @@
                 class="text-custom-blue hover:text-custom-red mr-4">Party details</a>
             <a href="{{ url_for('gift_registry_page', party_id=party.uuid) }}"
                 class="text-custom-blue hover:text-custom-red mr-4">Gift registry</a>
-            <a href="" class="text-custom-blue hover:text-custom-red">Guest List</a>
+            <a href="{{ url_for('guest_list_page', party_id=party.uuid) }}"
+                class="text-custom-blue hover:text-custom-red">Guest List</a>
         </div>
     </div>
     {% else %}

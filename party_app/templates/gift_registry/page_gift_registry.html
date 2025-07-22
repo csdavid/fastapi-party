@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>
+<h2 class="font-dancing-script text-2x1 text-center p-10">
     Gift registry for a party at {{ party.venue }} on {{ party.party_date }}
 </h2>
 <div id="gift-registry" class="bg-white shadow-md">
@@ -18,6 +18,13 @@
             {% include 'gift_registry/partial_gift_detail.html' %}
             {% endfor %}
         </div>
+    </div>
+    <div class="bg-gray-50 py-4 px-6 text-center">
+        <button type="button" class="uppercase text-sm text-gray-700 cursor-pointer"
+            hx-target="#gift-registry .table-row-group" hx-swap="beforeend"
+            hx-get="{{ url_for('gift_create_partial', party_id = party.uuid) }}">
+            Add gift
+        </button>
     </div>
 </div>
 {% endblock %}
