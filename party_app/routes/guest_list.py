@@ -37,9 +37,6 @@ def mark_guests_attending_partial(
     session: Session = Depends(get_session),
     guest_ids: list[UUID] = Form(...),
 ):
-    print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-    print(f"Marking guests attending for party {party_id} with IDs: {guest_ids}")
-    print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     attending_guests = session.exec(
         select(Guest).where(Guest.uuid.in_(guest_ids))
     ).all()
@@ -53,8 +50,8 @@ def mark_guests_attending_partial(
 
     return templates.TemplateResponse(
         request=request,
-        name="guest_list/partial_guest_list.html",
-        context={"guests": guests},
+        name="guest_list/partial_guest_filter_and_list.html",
+        context={"party_id": party_id, "guests": guests},
     )
 
 
@@ -83,8 +80,8 @@ def mark_guests_not_attending_partial(
 
     return templates.TemplateResponse(
         request=request,
-        name="guest_list/partial_guest_list.html",
-        context={"guests": guests},
+        name="guest_list/partial_guest_filter_and_list.html",
+        context={"party_id": party_id, "guests": guests},
     )
 
 

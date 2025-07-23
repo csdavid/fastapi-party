@@ -58,6 +58,7 @@ def test_mark_guests_attending_updates_guests_returns_whole_list(
 
     assert response.status_code == status.HTTP_200_OK
     assert response.context["guests"] == [guest_1, guest_2]
+    assert response.context["party_id"] == party.uuid
 
 
 # Test for marking a guest as not attending
@@ -86,6 +87,7 @@ def test_mark_guests_not_attending_updates_guests_returns_whole_list(
 
     assert response.status_code == status.HTTP_200_OK
     assert response.context["guests"] == [guest_1, guest_2]
+    assert response.context["party_id"] == party.uuid
 
 
 def test_search_guests(
@@ -102,7 +104,7 @@ def test_search_guests(
     create_guest(session=session, party=another_party, name="Anna")
 
     url = app.url_path_for("filter_guests_partial", party_id=party.uuid)
-    data = {"guest_search": "An"}
+    data = {"guest_search": "An", "attending_filter": "all"}
 
     response = client.post(url, data=data)
 
