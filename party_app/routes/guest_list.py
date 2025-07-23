@@ -86,3 +86,85 @@ def mark_guests_not_attending_partial(
         name="guest_list/partial_guest_list.html",
         context={"guests": guests},
     )
+
+
+def filter_attending(session: Session, party_id: UUID, **kwargs) -> list[Guest]:
+    return session.exec(
+        select(Guest).where((Guest.party_id == party_id) & (Guest.attending == True))
+    ).all()
+
+
+def filter_not_attending(session: Session, party_id: UUID, **kwargs) -> list[Guest]:
+    return session.exec(
+        select(Guest).where((Guest.party_id == party_id) & (Guest.attending == False))
+    ).all()
+
+
+def filter_attending_and_search(
+    session: Session, party_id: UUID, **kwargs
+) -> list[Guest]:
+    search_text = kwargs.get("search_text", "")
+    return session.exec(
+        select(Guest).where(
+            (Guest.party_id == party_id)
+            & (Guest.attending == True)
+            & (Guest.name.ilike(f"%{search_text}%"))
+        )
+    ).all()
+
+
+def filter_not_attending_and_search(
+    session: Session, party_id: UUID, **kwargs
+) -> list[Guest]:
+    search_text = kwargs.get("search_text", "")
+    return session.exec(
+        select(Guest).where(
+            (Guest.party_id == party_id)
+            & (Guest.attending == False)
+            & (Guest.name.ilike(f"%{search_text}%"))
+        )
+    ).all()
+
+
+def filter_search(session: Session, party_id: UUID, **kwargs) -> list[Guest]:
+    search_text = kwargs.get("search_text", "")
+    return session.exec(
+        select(Guest).where(
+            (Guest.party_id == party_id) & (Guest.name.ilike(f"%{search_text}%"))
+        )
+    ).all()
+
+
+def filter_default(session: Session, party_id: UUID, **kargs) -> list[Guest]:
+    return session.exec(select(Guest).where(Guest.party_id == party_id)).all()
+
+
+QUERY_FILTERS = {
+    ("attending", False): filter_attending,
+    ("not_attending", False): filter_not_attending,
+    ("attending", True): filter_attending_and_search,
+    ("not_attending", True): filter_not_attending_and_search,
+    ("all", True): filter_search,
+}
+
+
+@router.post("/filter", name="filter_guests_partial", response_class=HTMLResponse)
+def filter_guests_partial(
+    party_id: UUID,
+    request: Request,
+    templates: Templates,
+    session: Session = Depends(get_session),
+    guest_search: str = Form(...),
+    attending_filter: str = Form(...),
+):
+    query_filter = QUERY_FILTERS.get(
+        (attending_filter, bool(guest_search)), filter_default
+    )
+
+    guests = query_filter(session=session, party_id=party_id, search_text=guest_search)
+
+    return templates.TemplateResponse(
+        request=request,
+        name="guest_list/partial_guest_list.html",
+        context={"party_id": party_id, "guests": guests},
+    )
