@@ -1,0 +1,30 @@
+{% if not parties and pages == 1 %}
+<div class="col-span-2 text-center bg-sky-200 border border-custom-red text-custom-red p-5 py-3 rounded" role="alert">
+    <p class="mt-3">You currently have no parties</p>
+</div>
+{% else %}
+{% for party in parties %}
+{% if loop.last and next_page %}
+<div class="border-2 p-10 border-custom-blue bg-white shadow-lg" hx-target="this" hx-get="?page={{ next_page }}"
+    hx-swap="afterend" hx-trigger="revealed">
+    {% else %}
+    <div class="border-2 p-10 border-custom-blue bg-white shadow-lg">
+        {% endif %}
+
+        <h2 class="mb-2 font-bold text-2x1 text-custom-blue uppercase">{{party.party_date}}, {{party.party_time}},
+            {{party.venue}}</h2>
+        <div>
+            {{ party.invitation|truncate(250) }}
+        </div>
+        <div class="mt-4">
+            <a href="{{ url_for('party_detail_page', party_id=party.uuid) }}"
+                class="text-custom-blue hover:text-custom-red mr-4">Party details</a>
+            <a href="{{ url_for('gift_registry_page', party_id=party.uuid) }}"
+                class="text-custom-blue hover:text-custom-red mr-4">Gift registry</a>
+            <a href="{{ url_for('guest_list_page', party_id=party.uuid) }}"
+                class="text-custom-blue hover:text-custom-red">Guest List</a>
+            <a>next_page: {{next_page}}</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
