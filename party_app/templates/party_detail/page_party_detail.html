@@ -5,10 +5,22 @@
     <section id="party-invitation" class="drop-shadow-lg my-10 p-6 bg-white rounded-lg ">
         {% include 'party_detail/partial_party_detail.html' %}
     </section>
+    <div x-data="{ tooltipShow: false }" class="relative">
+        <div x-show="tooltipShow" x-cloak x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform scale-95"
+            x-transition:enter-end="opacity-100 transform scale-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 transform scale-100"
+            x-transition:leave-end="opacity-0 transform scale-95"
+            class="p-2 bg-custom-blue text-[10px] text-white absolute bottom-8 left-10 rounded-lg bottom-full">
+            Back to list of parties
+        </div>
 
-    <a href="/"
-        class="bg-custom-blue w-[40px] h-[40px] flex justify-center items-center text-custom-powder-light rounded-full hover:bg-custom-blue-light">
-        &#8249;
-    </a>
+        <a href="/"
+            class="bg-custom-blue w-[40px] h-[40px] flex justify-center items-center text-custom-powder-light rounded-full hover:bg-custom-blue-light"
+            x-on:mouseover="tooltipShow = true" x-on:mouseout="tooltipShow = false">
+            &#8249;
+        </a>
+    </div>
 </div>
 {% endblock %}

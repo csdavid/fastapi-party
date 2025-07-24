@@ -19,11 +19,16 @@ def guest_list_page(
     session: Session = Depends(get_session),
 ):
     guests = session.exec(select(Guest).where(Guest.party_id == party_id)).all()
+    attending_num = sum(1 for guest in guests if guest.attending)
 
     return templates.TemplateResponse(
         request=request,
         name="guest_list/page_guest_list.html",
-        context={"party_id": party_id, "guests": guests},
+        context={
+            "party_id": party_id,
+            "guests": guests,
+            "attending_num": attending_num,
+        },
     )
 
 

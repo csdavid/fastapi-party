@@ -1,25 +1,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="w-6/8 bg-white shadow-md m-auto">
-    <div class="bg-gray-50 p-4">
-        {% include 'guest_list/partial_guest_filter.html' %}
-    </div>
-
-    <form class="table text-left text-gray-500 table-fixed min-w-fit p-8" id="guest-form">
-        <div class="table-row-group" id="guests">
-            {% include 'guest_list/partial_guest_list.html' %}
+<div class="w-5/8 min-w-fit m-auto text-right" x-data="{ guest_count: false}">
+    <template x-teleport="#guest_list_container">
+        <div class="w-2/5 p-3 text-center border-custom-blue border-2 rounded-md border-solid bg-sky-200 mx-auto mt-3"
+            x-show="guest_count">
+            <p class="text-custom-blue">{{ guests|length }} guests invited to the party.</p>
+            <p class="text-custom-blue">{{ attending_num }} guests attending the party.</p>
         </div>
-    </form>
-    <div class="bg-gray-50 grid grid-cols-2" hx-include="#guests" hx-target="#guests">
-        <button class="p-5 uppercase text-sm cursor-pointer" type="button"
-            hx-put="{{ url_for('mark_guests_not_attending_partial', party_id=party_id) }}">
-            Not attending
-        </button>
-        <button class="p-5 uppercase text-sm cursor-pointer" type="button"
-            hx-put="{{ url_for('mark_guests_attending_partial', party_id=party_id) }}">
-            Attending
-        </button>
+    </template>
+    <button class="btn-default mb-3 text-sm" x-on:click="guest_count = !guest_count"
+        x-text="guest_count ? 'Hide guest count': 'Show guest count'">
+    </button>
+</div>
+<div id="guest_list_container">
+    <div class="w-5/8 bg-white shadow-md m-auto">
+        {% include 'guest_list/partial_guest_filter.html' %}
+
+        <div x-data="{ selected_all: false }">
+            <div class="pl-14 py-1 text-gray-500 border-b-gray-200 border-b">
+                <input type="checkbox" x-model="selected_all" class="border-gray-400">
+                <span class="p-1 text-xs" x-text="selected_all ? 'Unselect all' : 'Select all'"></span>
+            </div>
+
+            <form class="table text-left text-gray-500 table-fixed min-w-fit p-8" id="guest-form">
+                <div class="table-row-group" id="guests">
+                    {% include 'guest_list/partial_guest_list.html' %}
+                </div>
+            </form>
+        </div>
+
+        <div class="bg-gray-50 grid grid-cols-2" hx-include="#guests" hx-target="#guests">
+            <button class="p-5 uppercase text-sm cursor-pointer" type="button"
+                hx-put="{{ url_for('mark_guests_not_attending_partial', party_id=party_id) }}">
+                Not attending
+            </button>
+            <button class="p-5 uppercase text-sm cursor-pointer" type="button"
+                hx-put="{{ url_for('mark_guests_attending_partial', party_id=party_id) }}">
+                Attending
+            </button>
+        </div>
     </div>
 </div>
 {% endblock %}
