@@ -5,14 +5,15 @@
     </div>
     <div class="table-cell py-4 px-6">
         <button type="submit" hx-get="{{ url_for('gift_update_partial', party_id=party.uuid, gift_id=gift.uuid ) }}"
-            hx-target="closest .table-row" hx-swap="outerHTML">
+            hx-target="closest .table-row" hx-swap="outerHTML" data-cy="edit-gift-button">
             Edit
         </button>
     </div>
     <div class="table-cell py-4 px-6">
         <button type="button" hx-target="closest .table-row" hx-swap="outerHTML"
             hx-confirm="Are you sure you want to remove this gift?"
-            hx-delete="{{ url_for('gift_remove_partial', party_id=party.uuid, gift_id=gift.uuid)}}">
+            hx-delete="{{ url_for('gift_remove_partial', party_id=party.uuid, gift_id=gift.uuid)}}"
+            data-cy="delete-gift-button">
             Delete
         </button>
     </div>

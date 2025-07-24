@@ -11,7 +11,8 @@
         {{ party.invitation }}
     </div>
     <button class="btn-default mr-0 ml-auto block"
-        hx-get="{{ url_for('partial_party_detail_edit', party_id=party.uuid) }}" hx-target="#party-detail">
+        hx-get="{{ url_for('partial_party_detail_edit', party_id=party.uuid) }}" hx-target="#party-detail"
+        data-cy="edit-party-button">
         Edit
     </button>
 </div>

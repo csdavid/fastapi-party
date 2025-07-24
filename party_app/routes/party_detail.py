@@ -64,7 +64,7 @@ def party_detail_save_form_partial(
 
     return templates.TemplateResponse(
         request=request,
-        name="party_detail/partial_party_edit.html",
+        name="party_detail/partial_party_detail.html",
         context={"party": party},
     )
 

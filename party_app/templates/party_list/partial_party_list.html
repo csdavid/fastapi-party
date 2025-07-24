@@ -20,7 +20,7 @@
             <a href="{{ url_for('party_detail_page', party_id=party.uuid) }}"
                 class="text-custom-blue hover:text-custom-red mr-4">Party details</a>
             <a href="{{ url_for('gift_registry_page', party_id=party.uuid) }}"
-                class="text-custom-blue hover:text-custom-red mr-4">Gift registry</a>
+                class="text-custom-blue hover:text-custom-red mr-4" data-cy="gift-registry-link">Gift registry</a>
             <a href="{{ url_for('guest_list_page', party_id=party.uuid) }}"
                 class="text-custom-blue hover:text-custom-red">Guest List</a>
             <a>next_page: {{next_page}}</a>

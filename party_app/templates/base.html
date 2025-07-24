@@ -15,7 +15,10 @@
         <a href="/" class="inline-block p-4 text-custom-powder-light font-dancing-script text-2x1">
             My parties
         </a>
-        <a href="{{ url_for('new_party_form_page') }}" class="inline-block p-4 text-custom-powder-light">New party</a>
+        <a href="{{ url_for('new_party_form_page') }}" class="inline-block p-4 text-custom-powder-light"
+            data-cy="new-party-link">
+            New party
+        </a>
     </nav>
     <main class="container p-5 mx-auto">
         {% block content %}

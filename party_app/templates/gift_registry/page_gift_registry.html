@@ -22,7 +22,7 @@
     <div class="bg-gray-50 py-4 px-6 text-center">
         <button type="button" class="uppercase text-sm text-gray-700 cursor-pointer"
             hx-target="#gift-registry .table-row-group" hx-swap="beforeend"
-            hx-get="{{ url_for('gift_create_partial', party_id = party.uuid) }}">
+            hx-get="{{ url_for('gift_create_partial', party_id = party.uuid) }}" data-cy="add-gift-button">
             Add gift
         </button>
     </div>
