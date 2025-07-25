@@ -1,9 +1,11 @@
+import os
 from logging.config import fileConfig
+from pathlib import Path
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-
 from sqlmodel import SQLModel
+
 from party_app.models import *
 
 from alembic import context
@@ -60,10 +62,17 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
+    db_url = os.getenv(
+        "DATABASE_URL", f"sqlite:///{Path(__file__).parent / 'database.db'}"
+    ).replace("postgres://", "postgresql+psycopg://", 1)
+    config.set_main_option("sqlalchemy.url", db_url)
+
+    url = config.get_main_option("sqlalchemy.url")
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
+        url=url,
     )
 
     with connectable.connect() as connection:

@@ -1,0 +1,11 @@
+venv
+.dockerignore
+Dockerfile
+.git
+.gitignore
+.pytest_cache
+.github
+.node_modules
+cypress
+cypress.config.js
+party_app/static/css/output.css
